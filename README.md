@@ -1,8 +1,8 @@
 # alienAddressBook2.0
 
-UPDATE : <br>
+UPDATE (Before running): <br>
   &emsp;-sh ./update.sh
   
-RUN (form different terminal's tabs or in background job):<br>
+RUN (Form different terminal's tabs or in background job):<br>
   &emsp;-sh ./runBack.sh<br>
   &emsp;-sh ./runFront.sh
