@@ -1,0 +1,86 @@
+<div style="width: 80%;position: absolute; transform: translate(0%, 0%); left: 10%; top: 5%">
+    <br>
+    <mat-card>
+        <section class="mat-typography">
+          <h1 style="text-align:center;">Informations</h1>
+        </section>
+         <mat-divider></mat-divider>
+        <br>
+        <div style="text-align: right">
+          <button mat-raised-button  color="accent" routerLink="/connection">Deconnexion</button>
+        </div>
+        
+        <table mat-table [dataSource]="alieninf" style="width: 100%">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Nom</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+          <ng-container matColumnDef="family">
+            <th mat-header-cell *matHeaderCellDef>Famille</th>
+            <td mat-cell *matCellDef="let element"> {{element.family}} </td>
+          </ng-container>
+          <ng-container matColumnDef="planet">
+            <th mat-header-cell *matHeaderCellDef>Planète</th>
+            <td mat-cell *matCellDef="let element"> {{element.planet}} </td>
+          </ng-container>
+          <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef>Age</th>
+            <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+          </ng-container>
+          <ng-container matColumnDef="kind">
+            <th mat-header-cell *matHeaderCellDef>Espèce</th>
+            <td mat-cell *matCellDef="let element"> {{element.kind}} </td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsInfo"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsInfo"></tr>
+    
+        </table>
+        <br>
+        <div style="text-align: center">
+            <button mat-raised-button  color="primary" (click)="goToModify()">Modifier</button>
+        </div>
+    </mat-card>
+  <br><br>
+  <mat-card>
+    <section class="mat-typography">
+      <h1 style="text-align:center;">Contacts</h1>
+    </section>
+     <mat-divider></mat-divider>
+     <br>
+    <button mat-raised-button  color="primary" (click)="goToAdd()">Ajouter Un Contact</button>
+    
+    <table mat-table [dataSource]="contact" style="width: 100%">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="family">
+        <th mat-header-cell *matHeaderCellDef>Famille</th>
+        <td mat-cell *matCellDef="let element"> {{element.family}} </td>
+      </ng-container>
+      <ng-container matColumnDef="planet">
+        <th mat-header-cell *matHeaderCellDef>Planète</th>
+        <td mat-cell *matCellDef="let element"> {{element.planet}} </td>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef>Age</th>
+        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+      </ng-container>
+      <ng-container matColumnDef="kind">
+        <th mat-header-cell *matHeaderCellDef>Espèce</th>
+        <td mat-cell *matCellDef="let element"> {{element.kind}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button color="warn" (click)="deleteContact(element.name, element.dad)">Supprimer</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+</mat-card>
+</div>

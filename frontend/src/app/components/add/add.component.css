@@ -1,0 +1,18 @@
+table {
+    width: 100%
+}
+
+.mat-column-class {
+    text-align: center;
+}
+
+.contact-create-form {
+    width: 100%
+}
+
+.requiered-field {
+    width: 30%
+}
+.optional-field {
+    width: 21%
+}

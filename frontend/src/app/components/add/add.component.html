@@ -1,0 +1,91 @@
+<div style="width: 82%;position: absolute; transform: translate(0%, 0%); left: 10%; top: 5%">
+  <br>
+  <mat-card>
+      <section class="mat-typography">
+          <h1 style="text-align:center">Créer un contact</h1>
+      </section>
+      <mat-divider></mat-divider>
+      <br>
+    <div style="text-align: right">
+      <button mat-raised-button  color="accent" (click)="goToList()">Retour</button>
+    </div>
+      <form [formGroup]="contactCreateForm" class="contact-create-form">
+        <table>
+          <tr>
+            <mat-form-field class="requiered-field">
+              <input matInput placeholder="Nom de compte" formControlName="userId" #userId>
+            </mat-form-field>
+            &nbsp;&nbsp;
+            <mat-form-field class="requiered-field">
+              <input matInput placeholder="Mot de Passe" formControlName="userPw" #userPw>
+            </mat-form-field>
+            &nbsp;&nbsp;
+            <mat-form-field class="requiered-field">
+              <input matInput placeholder="Nom" formControlName="name" #name>
+            </mat-form-field>
+          </tr>
+          <tr>
+             <mat-form-field class="optional-field">
+               <input matInput placeholder="Age" formControlName="age" #age>
+             </mat-form-field>
+             &nbsp;&nbsp;
+             <mat-form-field class="optional-field">
+              <input matInput placeholder="Famille" formControlName="family" #family>
+             </mat-form-field>
+              &nbsp;&nbsp;
+             <mat-form-field class="optional-field">
+               <input matInput placeholder="Espèce" formControlName="kind" #kind>
+             </mat-form-field>
+             &nbsp;&nbsp;
+             <mat-form-field class="optional-field">
+               <input matInput placeholder="Planète" formControlName="planet" #planet>
+              </mat-form-field>
+           </tr>
+          </table>
+          <br><br>
+          <div style="text-align:center">
+            <button type="submit" (click)="createContact(userId.value, userPw.value, name.value, age.value, family.value, kind.value, planet.value)" [disabled]="contactCreateForm.prestine || contactCreateForm.invalid" mat-raised-button color="primary">Valider</button>    
+          </div>
+        </form>
+    </mat-card>
+  <br><br>
+  <mat-card>
+    <section class="mat-typography">
+      <h1 style="text-align:center">Ajouter un contact</h1>
+    </section>
+    <mat-divider></mat-divider>
+    <br><br>
+    <table mat-table [dataSource]="aliens" style="width: 100%">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="family">
+        <th mat-header-cell *matHeaderCellDef>Famille</th>
+        <td mat-cell *matCellDef="let element"> {{element.family}} </td>
+      </ng-container>
+      <ng-container matColumnDef="planet">
+        <th mat-header-cell *matHeaderCellDef>Planète</th>
+        <td mat-cell *matCellDef="let element"> {{element.planet}} </td>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef>Age</th>
+        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+      </ng-container>
+      <ng-container matColumnDef="kind">
+        <th mat-header-cell *matHeaderCellDef>Espèce</th>
+        <td mat-cell *matCellDef="let element"> {{element.kind}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button color="primary" (click)="addContact(element.name)">Ajouter</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+  </mat-card>
+</div>

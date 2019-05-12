@@ -1,0 +1,38 @@
+<div  style="width: 400px; position: absolute; transform: translate(-50%, -50%); left: 50%; top: 50%">
+    <br>
+    <mat-card>
+      <section class="mat-typography">
+        <h1 style="text-align:center">Modification</h1>
+      </section>
+      <mat-divider></mat-divider>
+      <br>
+      <div style="text-align:right">
+        <button mat-raised-button color="accent" (click)="goToList()">Retour</button>
+      </div>
+      <form [formGroup]="modifyForm" class="modify-form">
+        <mat-form-field class="field">
+          <input matInput placeholder="Nom" formControlName="name" #name>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="field">
+          <input matInput placeholder="Age" formControlName="age" #age>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="field">
+          <input matInput placeholder="Famille" formControlName="family" #family>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="field">
+          <input matInput placeholder="Espèce" formControlName="kind" #kind>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="field">
+          <input matInput placeholder="Planète" formControlName="planet" #planet>
+        </mat-form-field>
+        <br><br>
+        <div style="text-align:center">
+          <button type="submit" (click)="modifyAlien(name.value, age.value, family.value, kind.value, planet.value)" [disabled]="modifyForm.prestine || modifyForm.invalid" mat-raised-button color="primary">Valider</button>&nbsp;&nbsp;&nbsp;    
+        </div>
+      </form>
+    </mat-card>
+  </div>

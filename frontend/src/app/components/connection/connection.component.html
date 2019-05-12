@@ -1,0 +1,26 @@
+<div  style="width: 400px; position: absolute; transform: translate(-50%, -50%); left: 50%; top: 50%">
+    <br>
+    <mat-card>
+      <section class="mat-typography">
+        <h1 style="text-align:center">Connexion</h1>
+      </section>
+      <mat-divider></mat-divider>
+      <br>
+      <div style="text-align:right">
+        <button mat-raised-button color="accent" routerLink="/subscribe">Inscription</button>
+      </div>
+      <form [formGroup]="connectForm" class="connect-form">
+        <mat-form-field class="field">
+          <input matInput placeholder="Nom de compte" formControlName="userId" #userId>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="field">
+          <input matInput type="password" placeholder="Mot de Passe" formControlName="userPw" #userPw>
+        </mat-form-field>
+        <br><br>
+        <div style="text-align:center">
+          <button type="submit" (click)="connectAlien(userId.value, userPw.value)" [disabled]="connectForm.prestine || connectForm.invalid" mat-raised-button color="primary">Connexion</button>    
+        </div>
+      </form>
+    </mat-card>
+  </div>
