@@ -2,7 +2,7 @@
 
 Make sure you have NODE and ANGULAR available on your computer :<br>
 &emsp;NODE :<br>
-&emsp;&emsp;Go on https://nodejs.org and download nodeJS<br>
+&emsp;&emsp;-Go on https://nodejs.org and download nodeJS<br>
 &emsp;ANGULAR (after installing NODE):<br>
 &emsp;&emsp;-npm install -g @angular/cli
 
