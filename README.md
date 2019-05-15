@@ -4,10 +4,10 @@ Make sure you have NODE and ANGULAR available on your computer :<br>
 &emsp;NODE :<br>
 &emsp;&emsp;-Go on https://nodejs.org and download nodeJS<br>
 &emsp;ANGULAR (after installing NODE):<br>
-&emsp;&emsp;-npm install -g @angular/cli
+&emsp;&emsp;-npm install -g @angular/cli<br><br>
 
 Update (Before running): <br>
-&emsp;&emsp;-sh ./update.sh<br>
+&emsp;&emsp;-sh ./update.sh<br><br>
   
 Run (Form different terminal's tabs):<br>
 &emsp;&emsp;-sh ./runBack.sh<br>
