@@ -32,8 +32,10 @@ router.route('/aliens').get(function(req, res){
 
 router.route('/alien/:id').get(function(req, res){
     Alien.findById(req.params.id, function(err, alien){
-        if (err)
+        if (err) {
             console.log(err);
+            res.json(undefined);
+        }
         else
             res.json(alien);
     });
@@ -152,7 +154,7 @@ router.route('/contact/add/:alien1/:alien2').get(function(req, res){
             while (y < aliens.length && aliens[y].id !== req.params.alien2)
                 y++;
             if (i === y)
-                res.json('Can\'t add yourself in contact');
+            res.status(400).send('Can\'t add yourself in contact');
             else{
                 let contact1 = {
                   name: aliens[i].name,

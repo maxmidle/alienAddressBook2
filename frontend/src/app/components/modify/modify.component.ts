@@ -50,6 +50,8 @@ export class ModifyComponent implements OnInit {
 
   fetchAlien(id) {
     this.alienService.getAlienById(id).subscribe((data: AlienInf) => {
+      if (!data)
+        this.router.navigate(['/connection']);
       let alienInfo = new Array(data);
       this.alieninf = alienInfo;
     });

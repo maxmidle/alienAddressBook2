@@ -18,6 +18,7 @@ export class AddComponent implements OnInit {
   contactCreateForm: FormGroup;
   id: String;
   aliens: AlienInf[];
+  alieninf: AlienInf[];
   displayedColumns = ['name', 'family', 'planet', 'age', 'kind', 'actions'];
 
   constructor(private alienService : AlienService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private snackBar: MatSnackBar) {
@@ -41,6 +42,16 @@ export class AddComponent implements OnInit {
       this.id = params.id
     });
     this.fetchAliens();
+    this.fetchAlien(this.id);
+  }
+
+  fetchAlien(id) {
+    this.alienService.getAlienById(id).subscribe((data: AlienInf) => {
+      if (!data)
+        this.router.navigate(['/connection']);
+      let alienInfo = new Array(data);
+      this.alieninf = alienInfo;
+    });
   }
 
   fetchAliens() {
@@ -58,8 +69,7 @@ export class AddComponent implements OnInit {
       this.snackBar.open('Contact ajouté', 'OK', {
         duration: 3000
       });
-      this.fetchAliens();
-      this.goToList();
+      this.goToList()
     });
   }
 
