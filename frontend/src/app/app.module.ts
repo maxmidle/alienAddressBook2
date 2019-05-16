@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'modify/:id', component: ModifyComponent},
   { path: 'list/:id', component: ListComponent},
   { path: 'add/:id', component: AddComponent},
-  { path : '', redirectTo: 'connection', pathMatch: 'full'}
+  { path : '**', redirectTo: 'connection', pathMatch: 'full'}
 ]
 
 @NgModule({
