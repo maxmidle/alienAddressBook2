@@ -67,13 +67,30 @@ router.route('/connect').post(function(req, res){
 });
 
 router.route('/subscribe/add').post(function(req, res){
-    let alien = new Alien(req.body);
-
-    alien.save().then(function(alien){
-            res.status(200).json({'alien': 'Added successfully'});
-        }).catch(function(err){
-            res.status(400).json('Failed to create new account');
-        });
+    Alien.findOne({
+        userId: req.body.userId
+    }, function(err, alienidtest){
+        if (!alienidtest){
+            Alien.findOne({
+                name: req.body.name
+            }, function(err, aliennametest) {
+                if (!aliennametest) {
+                    let alien = new Alien(req.body);
+                    alien.save().then(function(alien){
+                        res.status(200).json({'alien': 'Added successfully'});
+                    }).catch(function(err){
+                        res.status(400).json('Failed to create new account');
+                    });
+                }
+                else
+                    res.status(400).send('Subscription failed');
+            });
+        }
+        else
+            res.status(400).send('Subscription failed');
+        if (err)
+            console.log(err);
+    });
 });
 
 router.route('/modify/apply/:id').post(function(req, res){
@@ -149,12 +166,17 @@ router.route('/contact/add/:alien1/:alien2').get(function(req, res){
         {
             let i = 0;
             let y = 0;
+            let x = 0;
             while (i < aliens.length && aliens[i].name !== req.params.alien1)
                 i++;
             while (y < aliens.length && aliens[y].id !== req.params.alien2)
                 y++;
-            if (i === y)
-            res.status(400).send('Can\'t add yourself in contact');
+            while (x < aliens[i].contacts.length && aliens[i].contacts[x].name !== aliens[y].name)
+                x++;
+            if (x !== aliens[i].contacts.length)
+                res.status(400).send('Contact already added');
+            else if (i === y)
+                res.status(400).send('Can\'t add yourself in contact');
             else{
                 let contact1 = {
                   name: aliens[i].name,
